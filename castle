@@ -8,6 +8,32 @@
 
   <style>
 
+  .insta-hitbox{
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;      /* above the star */
+  background: transparent;
+}
+
+/* desktop: match your .pic-5 exactly */
+.desktop-insta{
+  top: 17px;
+  left: 950px;
+  width: 180px;
+  height: 180px;   /* clickable square - tweak if needed */
+}
+
+/* mobile: match your .m-blue exactly */
+@media (max-width: 600px){
+  .mobile-insta{
+    top: 145px;
+    right: 9px;
+    width: 130px;
+    height: 130px;
+  }
+}
+
     .desktop-layout { display: block; }
     .mobile-layout  { display: none;  }
 
@@ -304,14 +330,13 @@
         <img src="castle.png" class="pic pic-2">
         <img src="greenstar.png" class="pic pic-3">
         <img src="purplestar.png" class="pic pic-4">
+        <img src="bluestar.png" class="pic pic-5">
+        <a class="insta-hitbox desktop-insta"
+   href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Instagram"></a>
         <img src="whitestar.png" class="pic pic-6">
         <img src="whitestar.png" class="pic pic-7">
-        
-        <a href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-        target="_blank" rel="noopener noreferrer"
-        style="position:absolute; top:17px; left:950px; z-index:3;">
-        <img src="insta.png" class="pic" style="width:180px; height:auto;" alt="Instagram">
-        </a>
         
         <div class="date">february 27th</div>
         <div class="location">location: announced soon</div>
@@ -339,12 +364,11 @@
         <img src="greenstar.png" class="m m-green">
         <img src="whitestar.png" class="m m-white2">
         <img src="castle.png" class="m m-castle">
-        
-        <a href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-        target="_blank" rel="noopener noreferrer"
-        style="position:absolute; top:145px; right:9px; z-index:6;">
-        <img src="insta.png" class="m" style="width:130px; height:auto;" alt="Instagram">
-        </a>
+        <img src="bluestar.png" class="m m-blue">
+        <a class="insta-hitbox mobile-insta"
+   href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Instagram"></a>
         
         <div class="m-lineup">lineup</div>
 
@@ -423,6 +447,5 @@
 
   animate();
 </script>
-</div>
 </body>
 </html>
