@@ -165,6 +165,15 @@
    
     img, .poster { image-rendering: pixelated; }
 
+      .insta-btn {
+    position: fixed;
+    top: 500px;
+    left: 700px;
+
+    width: 250px;
+    cursor: pointer;
+    z-index: 3;
+  }
     @media (max-width: 600px) {
 
   /* hide the dot trail on mobile (no cursor anyway) */
@@ -282,7 +291,7 @@
     letter-spacing: 1px;
     z-index: 7;
   }
-}
+
   </style>
 </head>
 
@@ -290,7 +299,13 @@
  <div class="desktop-layout">
     <div class="poster-scale">
       <div class="poster">
-
+        
+      <a href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+     target="_blank" 
+     rel="noopener noreferrer">
+      <img src="insta.png" class="insta-btn">
+      </a>
+        
         <!-- DESKTOP CONTENT -->
         <img src="logo.png" class="pic pic-1">
         <img src="castle.png" class="pic pic-2">
