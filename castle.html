@@ -11,17 +11,18 @@
   .insta-hitbox{
   display: block;
   position: absolute;
-  cursor: pointer;
+  cursor: url("cursor.png") 16 16, auto;
   z-index: 10;      /* above the star */
   background: transparent;
 }
 
 /* desktop: match your .pic-5 exactly */
 .desktop-insta{
-  top: 17px;
+  top: 50px;
   left: 950px;
   width: 300px;
-  height: 300px;   /* clickable square - tweak if needed */
+  height: 300px;
+   z-index: 10;/* clickable square - tweak if needed */
 }
 
 /* mobile: match your .m-blue exactly */
