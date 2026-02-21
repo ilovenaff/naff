@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="purplestar.png">
+ <title>(˶˃ ᵕ ˂˶) .ᐟ.ᐟ</title>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+
+  .insta-hitbox{
+  display: block;
+  position: absolute;
+  cursor: url("cursor.png") 16 16, auto;
+  z-index: 10;      /* above the star */
+  background: transparent;
+}
+
+/* desktop: match your .pic-5 exactly */
+.desktop-insta{
+  top: 50px;
+  left: 950px;
+  width: 300px;
+  height: 300px;
+   z-index: 10;/* clickable square - tweak if needed */
+}
+
+/* mobile: match your .m-blue exactly */
+@media (max-width: 600px){
+  .mobile-insta{
+    top: 145px;
+    right: 9px;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+    .desktop-layout { display: block; }
+    .mobile-layout  { display: none;  }
+
+ @media (max-width: 600px) {
+      .desktop-layout { display: none; }
+      .mobile-layout  { display: block; }
+    }
+
+    * {
+      cursor: url("cursor.png") 16 16, auto;
+    }
+    
+  .dot {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    border-radius: 100%;
+    background: white;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+  }
+  
+  .poster {
+  position: relative;
+  width: 1500px;
+  height: 1000px;
+  background: #ddc5ee;
+  box-sizing: border-box;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+.poster-scale {
+  transform: scale(.8);
+}
+
+.pic {
+  position: absolute;
+  height: auto;
+}
+  .pic-1 {
+   width: 650px;
+   top: 0px;
+   left: 0px;
+   z-index: 2;
+}
+
+.pic-2 {
+  width: 900px;
+  top: 90px;
+  left: 250px;
+  z-index: 1;
+}
+
+.pic-3 {
+ width: 250px;
+ top: 570px;
+ left: 700px;
+ z-index: 3
+}
+
+.pic-4 {
+  width: 140px;
+  top: 70px;
+  left: 630px;
+  z-index: 3
+}
+
+.pic-5 {
+ width: 200px;
+ top: 37px;
+ left: 950px;
+ z-index: 3
+}
+
+.pic-6 {
+ width: 180px;
+ top: 550px;
+ left: 1000px;
+ z-index: 3
+}
+.pic-7 {
+ width: 180px;
+ top: 550px;
+ left: 490px;
+ z-index: 3
+}
+
+   body{
+  margin-top: 20px;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  background:#ddc5ee;
+  font-family:"Lucida Console", Monaco, monospace;
+}
+
+    .date {
+      position: absolute;
+      top: 600px;
+      left: 180px;
+      font-size: 35px;
+      font-family: "Lucida Console", Monaco, monospace;;
+      font-weight: bolder;
+      color: #ff37d0;
+      letter-spacing: 1px;
+      z-index: 3
+    }
+
+    .location {
+      position: absolute;
+      top: 670px;
+      left: 120px;
+      font-size: 19px;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-weight: bolder;
+      color: #6f57ff;
+      letter-spacing: 1px;
+      z-index: 3
+    }
+
+    .lineup-title {
+      position: absolute;
+      top: 300px;
+      left: 180px;
+      font-size: 45px;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-style: italic;
+      font-weight: bolder;
+      color: #84ff9f; /* green */
+      letter-spacing: 10px;
+      z-index: 3
+    }
+
+    .name {
+      position: absolute;
+      font-family: "Impact",sans-serif, monospace;
+      font-size: 25px;
+      color: #ffffff;
+      letter-spacing: 2px;
+      z-index: 3
+    }
+
+    .dj1 { top: 355px; left: 120px; }
+    .dj2      { top: 390px; left: 120px; }
+    .dj3     { top: 425px; left: 120px; }
+    .dj4     { top: 460px; left: 120px; }
+    .dj5     { top: 495px; left: 120px; }
+    .dj6     { top: 530px; left: 120px; }
+
+   
+    img, .poster { image-rendering: pixelated; }
+
+      .insta-btn {
+    position: fixed;
+    top: 500px;
+    left: 700px;
+
+    width: 250px;
+    cursor: pointer;
+    z-index: 3;
+  }
+    @media (max-width: 600px) {
+
+  /* hide the dot trail on mobile (no cursor anyway) */
+  .dot { display: none; }
+
+  body {
+    margin-top: 0;
+    place-items: left;
+    background: #ddc5ee;
+  }
+
+  .m-scale {
+    transform: scale(1); /* you can change to 0.95 if needed */
+    transform-origin: top left;
+  }
+
+  .m-poster {
+    position: relative;
+    width: 390px;   /* iPhone-ish canvas */
+    height: 844px;  /* tall phone */
+    background: #ddc5ee;
+    overflow: hidden;
+  }
+
+  .m {
+    position: absolute;
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  /* top logo */
+  .m-logo {
+    width: 350px;
+    top: 3cqb;
+    left: 0px;
+    z-index: 5;
+  }
+
+  .m-blue {
+    width: 130px;
+    top: 100px;
+    right: 9px;
+    z-index: 6;
+  }
+
+  .m-purple {
+    width: 120px;
+    top: 400px;
+    left: 15px;
+    z-index: 6;
+  }
+
+  .m-green {
+    width: 130px;
+    top: 510px;
+    left: 0px;
+    z-index: 6;
+  }
+
+  
+
+  .m-castle {
+    width: 330px;
+    top: 170px;
+    left: 100px;
+    opacity: 0.70;
+    z-index: 3;
+  }
+
+  .m-lineup {
+    position: absolute;
+    top: 180px;
+    left: 30px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 35px;
+    letter-spacing: 8px;
+    color: #84ff9f;
+    z-index: 7;
+  }
+
+  .m-names {
+    position: absolute;
+    top: 250px;
+    left: 30px;
+    font-family: "Impact", sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    line-height: 1.25;
+    z-index: 7;
+  }
+
+  .m-date {
+    position: absolute;
+    bottom: 240px;
+    left: 140px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bolder;
+    font-size: 25px;
+    color: #ff37d0;
+    letter-spacing: 2px;
+    z-index: 7;
+  }
+
+  .m-loc {
+    position: absolute;
+    bottom: 220px;
+    left: 80px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bolder;
+    font-size: 16px;
+    color: #6f57ff;
+    letter-spacing: 1px;
+    z-index: 7;
+  }
+
+  </style>
+</head>
+
+<body>
+ <div class="desktop-layout">
+    <div class="poster-scale">
+      <div class="poster">
+        <!-- DESKTOP CONTENT -->
+        <img src="logo.png" class="pic pic-1">
+        <img src="castle.png" class="pic pic-2">
+        <img src="greenstar.png" class="pic pic-3">
+        <img src="purplestar.png" class="pic pic-4">
+        <img src="bluestar copy.png" class="pic pic-5">
+        <a class="insta-hitbox desktop-insta"
+   href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Instagram"></a>
+        <img src="whitestar.png" class="pic pic-6">
+        <img src="whitestar.png" class="pic pic-7">
+        
+        <div class="date">february 27th</div>
+        <div class="location">location: announced soon</div>
+        <div class="lineup-title">lineup</div>
+
+        <div class="name dj1">drugstoreblonde</div>
+        <div class="name dj2">cave bear bone flute</div>
+        <div class="name dj3">amhailt.xox</div>
+        <div class="name dj4">dj bitrot</div>
+        <div class="name dj5">dj alexander</div>
+        <div class="name dj6">swzz</div>
+
+      </div>
+    </div>
+  </div>
+
+ <div class="mobile-layout">
+    <div class="m-scale">
+      <div class="m-poster">
+
+        <!-- MOBILE CONTENT -->
+        <img src="logo.png" class="m m-logo">
+        <img src="whitestar.png" class="m m-white1">
+        <img src="purplestar.png" class="m m-purple">
+        <img src="greenstar.png" class="m m-green">
+        <img src="whitestar.png" class="m m-white2">
+        <img src="house.png" class="m m-castle">
+        <img src="bluestar copy.png" class="m m-blue">
+        <a class="insta-hitbox mobile-insta"
+   href="https://www.instagram.com/__n__a__f__f__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Instagram"></a>
+        
+        <div class="m-lineup">lineup</div>
+
+        <div class="m-names">
+          <div>drugstoreblonde</div>
+          <div>cave bear bone flute</div>
+          <div>amhailt.xox</div>
+          <div>dj bitrot</div>
+          <div>dj alexander</div>
+          <div>swzz</div>
+        </div>
+
+        <div class="m-date">february 27th</div>
+        <div class="m-loc">location: announced soon</div>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+  // White dot cursor trail
+  const DOTS = 400;          // how many dots exist
+  const SPAWN_EVERY = 1;   // lower = denser trail (try 8–20)
+
+  const dots = [];
+  for (let i = 0; i < DOTS; i++) {
+    const d = document.createElement("div");
+    d.className = "dot";
+    d.style.left = "-100px";
+    d.style.top = "-100px";
+    d.style.opacity = String((DOTS - i) / DOTS); // fade the tail
+    document.body.appendChild(d);
+    dots.push({ el: d, x: 0, y: 0 });
+  }
+
+  let mouseX = -100, mouseY = -100;
+  let tick = 0;
+
+  function setPos(x, y) {
+    mouseX = x;
+    mouseY = y;
+  }
+
+  window.addEventListener("mousemove", (e) => {
+    setPos(e.clientX, e.clientY);
+  });
+
+  // optional: touch support
+  window.addEventListener("touchmove", (e) => {
+    const t = e.touches[0];
+    if (t) setPos(t.clientX, t.clientY);
+  }, { passive: true });
+
+  function animate() {
+    tick++;
+
+    // only "push" new positions every N frames to create spacing
+    if (tick % SPAWN_EVERY === 0) {
+      // move the dots down the chain
+      for (let i = dots.length - 1; i > 0; i--) {
+        dots[i].x = dots[i - 1].x;
+        dots[i].y = dots[i - 1].y;
+      }
+      dots[0].x = mouseX;
+      dots[0].y = mouseY;
+    }
+
+    // render
+    for (const d of dots) {
+      d.el.style.left = d.x + "px";
+      d.el.style.top = d.y + "px";
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+</body>
+</html>
