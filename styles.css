@@ -465,36 +465,6 @@ img {
   }
 }
 
-/* Final mobile button positions */
-@media (max-width: 700px) {
-  .menu-hotspot--info {
-    left: 31%;
-    top: 56.8%;
-    width: 18%;
-    height: 5%;
-  }
-
-  .menu-hotspot--roles {
-    left: 46%;
-    top: 56.8%;
-    width: 31%;
-    height: 5%;
-  }
-
-  .menu-hotspot--application {
-    left: 35%;
-    top: 61%;
-    width: 35%;
-    height: 5%;
-  }
-
-  .menu-hotspot {
-    z-index: 100;
-    pointer-events: auto;
-    touch-action: manipulation;
-  }
-}
-
 /* Final mobile box size and button positions */
 @media (max-width: 700px) {
   /*
@@ -553,6 +523,91 @@ img {
   }
 
   .menu-hotspot {
+    z-index: 100;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+}
+
+/* ==================================================
+   Final mobile suitcase sizing and positioning
+================================================== */
+
+@media (max-width: 700px) {
+  /*
+    Enlarge both portrait images and shift them left
+    because the suitcase artwork sits right of center
+    inside the source files.
+  */
+  .box-page .artboard,
+  .menu-page .artboard {
+    position: relative;
+
+    width: 124vw;
+    max-width: none;
+
+    aspect-ratio: 960 / 1664;
+
+    transform: translateX(-8vw);
+  }
+
+  .box-page .artboard picture,
+  .menu-page .artboard picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .box-page .artboard-image,
+  .menu-page .artboard-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+    max-height: none;
+
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  /*
+    INFO — first row, left.
+  */
+  .menu-page .menu-hotspot--info {
+    left: 31%;
+    top: 58.6%;
+
+    width: 15%;
+    height: 4.8%;
+  }
+
+  /*
+    ROLE DESCRIPTIONS — first row, right.
+    Starts after the Info button ends, leaving a gap.
+  */
+  .menu-page .menu-hotspot--roles {
+    left: 49%;
+    top: 58.6%;
+
+    width: 27%;
+    height: 4.8%;
+  }
+
+  /*
+    APPLICATION FORM — separate second row.
+  */
+  .menu-page .menu-hotspot--application {
+    left: 38%;
+    top: 63.6%;
+
+    width: 28%;
+    height: 5%;
+  }
+
+  .menu-page .menu-hotspot {
     z-index: 100;
     pointer-events: auto;
     touch-action: manipulation;
