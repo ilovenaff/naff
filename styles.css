@@ -255,29 +255,25 @@ img {
 ================================================== */
 
 @media (max-width: 700px) {
-  /*
-    Mobile open-box hotspot positions.
-  */
-
   .menu-hotspot--info {
-    left: 30%;
-    top: 78%;
+    left: 32%;
+    top: 68%;
     width: 16%;
-    height: 5%;
+    height: 6%;
   }
 
   .menu-hotspot--roles {
-    left: 46%;
-    top: 78%;
-    width: 30%;
-    height: 5%;
+    left: 49%;
+    top: 68%;
+    width: 27%;
+    height: 6%;
   }
 
   .menu-hotspot--application {
-    left: 37%;
-    top: 82.5%;
-    width: 30%;
-    height: 5.5%;
+    left: 39%;
+    top: 72.5%;
+    width: 28%;
+    height: 6%;
   }
 
   .single-image-page {
@@ -321,6 +317,15 @@ img {
   }
 }
 
+.artboard picture,
+.artboard-image {
+  pointer-events: none;
+}
+
+.menu-hotspot {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
 
 /* ==================================================
    Reduced motion
