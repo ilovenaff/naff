@@ -30,12 +30,12 @@ body {
   margin: 0;
   overflow-x: hidden;
   background: var(--background);
-  cursor: url("cursor.png") 16 16, auto;
+
 }
 
 a,
 button {
-  cursor: url("cursor.png") 16 16, pointer;
+  
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -325,6 +325,15 @@ img {
 .menu-hotspot {
   pointer-events: auto;
   touch-action: manipulation;
+}
+
+/* Keep the custom key cursor everywhere */
+html,
+body,
+body *,
+body *::before,
+body *::after {
+  cursor: url("cursor.png") 16 16, auto !important;
 }
 
 /* ==================================================
