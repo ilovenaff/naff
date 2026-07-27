@@ -8,9 +8,16 @@
   <style>
 
       * {
-    cursor: url("cursor.png") 16 16, auto;
-  }
-  
+  box-sizing: border-box;
+}
+  html,
+body,
+body *,
+body *::before,
+body *::after {
+  cursor: url("cursor.png") 16 16, auto !important;
+}
+    
     /* white dot trail */
   .dot {
     position: fixed;
