@@ -249,6 +249,12 @@ img {
   border: 0;
 }
 
+/* One consistent cursor across the entire website */
+*,
+*::before,
+*::after {
+  cursor: url("cursor.png") 0 0, default !important;
+}
 
 /* ==================================================
    Mobile version
@@ -327,14 +333,6 @@ img {
   touch-action: manipulation;
 }
 
-/* Keep the custom key cursor everywhere */
-html,
-body,
-body *,
-body *::before,
-body *::after {
-  cursor: url("cursor.png") 16 16, auto !important;
-}
 
 /* ==================================================
    Reduced motion
