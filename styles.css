@@ -251,82 +251,6 @@ img {
 
 
 
-/* ==================================================
-   Mobile version
-================================================== */
-
-@media (max-width: 700px) {
-  .menu-hotspot--info {
-    left: 32%;
-    top: 68%;
-    width: 16%;
-    height: 6%;
-  }
-
-  .menu-hotspot--roles {
-    left: 49%;
-    top: 68%;
-    width: 27%;
-    height: 6%;
-  }
-
-  .menu-hotspot--application {
-    left: 39%;
-    top: 72.5%;
-    width: 28%;
-    height: 6%;
-  }
-
-  .single-image-page {
-    display: block;
-    min-height: 100svh;
-  }
-
-  .single-image-page picture {
-    width: 100%;
-  }
-
-  .single-page-image {
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: none;
-  }
-
-  .roles-desktop {
-    display: none;
-  }
-
-  .roles-mobile {
-    display: block;
-  }
-
-  .mobile-role-section {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-    background: white;
-  }
-
-  .mobile-role-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.artboard picture,
-.artboard-image {
-  pointer-events: none;
-}
-
-.menu-hotspot {
-  pointer-events: auto;
-  touch-action: manipulation;
-}
 
 
 /* ==================================================
@@ -465,151 +389,117 @@ img {
   }
 }
 
-/* Final mobile box size and button positions */
-@media (max-width: 700px) {
-  /*
-    The portrait image is intentionally wider than the
-    viewport because much of the image is empty white space.
-  */
-  .artboard {
-    position: relative;
-    width: 124vw;
-    max-width: none;
-    aspect-ratio: 960 / 1664;
-  }
-
-  .artboard picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .artboard-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    pointer-events: none;
-  }
-
-  /*
-    Move the first two buttons slightly upward.
-  */
-  .menu-hotspot--info {
-    left: 31%;
-    top: 54.8%;
-    width: 20%;
-    height: 5%;
-  }
-
-  .menu-hotspot--roles {
-    left: 46%;
-    top: 54.8%;
-    width: 34%;
-    height: 5%;
-  }
-
-  /*
-    Move Application Form upward too.
-  */
-  .menu-hotspot--application {
-    left: 34%;
-    top: 59%;
-    width: 38%;
-    height: 5%;
-  }
-
-  .menu-hotspot {
-    z-index: 100;
-    pointer-events: auto;
-    touch-action: manipulation;
-  }
-}
 
 /* ==================================================
-   Final mobile suitcase sizing and positioning
+   Final mobile menu layout — keep this as the only
+   mobile hotspot positioning block
 ================================================== */
 
 @media (max-width: 700px) {
   /*
-    Enlarge both portrait images and shift them left
-    because the suitcase artwork sits right of center
-    inside the source files.
+    Center and enlarge the portrait artwork.
+    No left/right transform.
   */
-  .box-page .artboard,
-  .menu-page .artboard {
-    position: relative;
+  .menu-page .artboard,
+  .box-page .artboard {
+    position: relative !important;
+    justify-self: center !important;
 
-    width: 124vw;
-    max-width: none;
+    width: 122vw !important;
+    max-width: none !important;
 
-    aspect-ratio: 960 / 1664;
+    margin: 0 !important;
+    transform: none !important;
 
-    transform: translateX(-8vw);
+    aspect-ratio: 960 / 1664 !important;
   }
 
-  .box-page .artboard picture,
-  .menu-page .artboard picture {
+  .menu-page .artboard picture,
+  .box-page .artboard picture {
     display: block;
     width: 100%;
     height: 100%;
     pointer-events: none;
   }
 
-  .box-page .artboard-image,
-  .menu-page .artboard-image {
+  .menu-page .artboard-image,
+  .box-page .artboard-image {
     display: block;
 
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
 
-    max-width: none;
-    max-height: none;
+    max-width: none !important;
+    max-height: none !important;
 
     object-fit: contain;
     pointer-events: none;
   }
 
   /*
-    INFO — first row, left.
+    One positioned container for all three buttons.
+    Change only left/top below when moving the entire
+    button group.
   */
-  .menu-page .menu-hotspot--info {
-    left: 31%;
-    top: 58.6%;
-
-    width: 15%;
-    height: 4.8%;
-  }
-
-  /*
-    ROLE DESCRIPTIONS — first row, right.
-    Starts after the Info button ends, leaving a gap.
-  */
-  .menu-page .menu-hotspot--roles {
-    left: 49%;
-    top: 58.6%;
-
-    width: 27%;
-    height: 4.8%;
-  }
-
-  /*
-    APPLICATION FORM — separate second row.
-  */
-  .menu-page .menu-hotspot--application {
-    left: 38%;
-    top: 63.6%;
-
-    width: 28%;
-    height: 5%;
-  }
-
-  .menu-page .menu-hotspot {
+  .menu-page .menu-controls {
+    position: absolute;
     z-index: 100;
+
+    left: 39%;
+    top: 59%;
+
+    width: 43%;
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.5fr;
+    grid-template-rows:
+      clamp(34px, 10vw, 44px)
+      clamp(36px, 11vw, 48px);
+
+    column-gap: 8px;
+    row-gap: 8px;
+
+    pointer-events: none;
+  }
+
+  /*
+    Reset every old absolute button setting.
+  */
+  .menu-page .menu-hotspot {
+    position: static !important;
+
+    left: auto !important;
+    top: auto !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    min-width: 0;
+    min-height: 0;
+
+    z-index: auto;
+
+    border-radius: 10px;
+
     pointer-events: auto;
     touch-action: manipulation;
+  }
+
+  .menu-page .menu-hotspot--info {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .menu-page .menu-hotspot--roles {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .menu-page .menu-hotspot--application {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    width: 68% !important;
+    justify-self: center;
   }
 }
