@@ -347,11 +347,11 @@ img {
   /*
     Match the dimensions of the portrait artwork.
   */
-  .artboard {
-    position: relative;
-    width: min(100vw, calc(100svh * 960 / 1664));
-    aspect-ratio: 960 / 1664;
-  }
+ .artboard {
+  position: relative;
+  width: min(92vw, calc(100svh * 960 / 1664));
+  aspect-ratio: 960 / 1664;
+}
 
   .artboard picture {
     display: block;
@@ -373,32 +373,26 @@ img {
   /*
     First row: Info
   */
-  .menu-hotspot--info {
-    left: 29%;
-    top: 66.5%;
-    width: 18%;
-    height: 5.5%;
-  }
+ .menu-hotspot--info {
+  left: 31%;
+  top: 56.8%;
+  width: 20%;
+  height: 6%;
+}
 
-  /*
-    First row: Role descriptions
-  */
-  .menu-hotspot--roles {
-    left: 47%;
-    top: 66.5%;
-    width: 30%;
-    height: 5.5%;
-  }
+.menu-hotspot--roles {
+  left: 46%;
+  top: 56.8%;
+  width: 34%;
+  height: 6%;
+}
 
-  /*
-    Second row: Application form
-  */
-  .menu-hotspot--application {
-    left: 35%;
-    top: 72.2%;
-    width: 35%;
-    height: 6%;
-  }
+.menu-hotspot--application {
+  left: 34%;
+  top: 61%;
+  width: 38%;
+  height: 6%;
+}
 
   .menu-hotspot {
     z-index: 100;
@@ -419,38 +413,18 @@ img {
   display: none;
 }
 
-/*
-  Only activate the custom cursor on devices with
-  a mouse or trackpad.
-*/
+/* ==================================================
+   Final NAFF key cursor
+================================================== */
+
+.naff-custom-cursor {
+  display: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .naff-custom-cursor {
-    position: fixed;
-    z-index: 2147483647;
-    top: 0;
-    left: 0;
-
-    display: block;
-    width: 48px;
-    height: 48px;
-
-    object-fit: contain;
-
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-
-    transform: translate3d(-100px, -100px, 0);
-    will-change: transform;
-  }
-
-  .naff-custom-cursor.is-visible {
-    opacity: 1;
-  }
-
   /*
-    Hide the normal browser cursor only after the
-    custom key image has loaded successfully.
+    Hide the browser's black triangle everywhere once
+    the pink key has loaded.
   */
   html.custom-cursor-ready,
   html.custom-cursor-ready body,
@@ -458,6 +432,36 @@ img {
   html.custom-cursor-ready body *::before,
   html.custom-cursor-ready body *::after {
     cursor: none !important;
+  }
+
+  .naff-custom-cursor {
+    position: fixed;
+    z-index: 2147483647;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    /* Slightly larger key */
+    width: 56px;
+    height: 56px;
+
+    object-fit: contain;
+
+    /* Fully solid—no opacity or fading */
+    opacity: 1 !important;
+    visibility: hidden;
+
+    pointer-events: none;
+    user-select: none;
+
+    transform: translate3d(-100px, -100px, 0);
+    transition: none !important;
+    will-change: transform;
+  }
+
+  .naff-custom-cursor.is-visible {
+    visibility: visible;
   }
 }
 

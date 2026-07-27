@@ -1,27 +1,31 @@
 "use strict";
 
 (() => {
-  const hasFinePointer = window.matchMedia(
+  const supportsCustomCursor = window.matchMedia(
     "(hover: hover) and (pointer: fine)"
   ).matches;
 
-  if (!hasFinePointer) {
+  /*
+   * Touchscreen-only devices do not need a mouse cursor.
+   */
+  if (!supportsCustomCursor) {
     return;
   }
 
   const keyCursor = document.createElement("img");
 
+  keyCursor.src = "cursor.png?v=cursor-6";
   keyCursor.alt = "";
   keyCursor.className = "naff-custom-cursor";
   keyCursor.draggable = false;
   keyCursor.setAttribute("aria-hidden", "true");
 
   /*
-   * Adjust these values to move the active point
-   * toward the tip of the key.
+   * These control which point of the key sits directly
+   * under the real mouse position.
    */
-  const HOTSPOT_X = 4;
-  const HOTSPOT_Y = 4;
+  const HOTSPOT_X = 8;
+  const HOTSPOT_Y = 8;
 
   let pointerX = -100;
   let pointerY = -100;
@@ -45,6 +49,10 @@
     animationFrameId = window.requestAnimationFrame(drawCursor);
   }
 
+  /*
+   * Only hide the browser cursor after the key image
+   * successfully loads.
+   */
   keyCursor.addEventListener(
     "load",
     () => {
@@ -58,18 +66,12 @@
   keyCursor.addEventListener(
     "error",
     () => {
-      /*
-       * Keep the normal browser cursor if cursor.png
-       * cannot load.
-       */
       document.documentElement.classList.remove(
         "custom-cursor-ready"
       );
     },
     { once: true }
   );
-
-  keyCursor.src = "cursor.png?v=cursor-5";
 
   document.body.appendChild(keyCursor);
 
