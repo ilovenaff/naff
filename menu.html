@@ -14,58 +14,172 @@
     content="width=device-width, initial-scale=1"
   >
 
-  <meta
-    name="description"
-    content="NAFF information, roles and application form"
-  >
-
   <title>NAFF Menu</title>
 
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: white;
+    }
+
+    .naff-menu-stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      background: white;
+    }
+
+    .naff-menu-canvas {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      line-height: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    .naff-menu-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .naff-menu-hotspot {
+      position: absolute;
+      z-index: 20;
+      display: block;
+      border-radius: 8px;
+      background: transparent;
+      pointer-events: auto;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    /* Desktop version */
+
+    .naff-menu-canvas--desktop {
+      width: min(100vw, calc(100svh * 1544 / 967));
+      aspect-ratio: 1544 / 967;
+    }
+
+    .desktop-info {
+      left: 37%;
+      top: 54%;
+      width: 11%;
+      height: 8%;
+    }
+
+    .desktop-roles {
+      left: 48%;
+      top: 54%;
+      width: 23%;
+      height: 8%;
+    }
+
+    .desktop-application {
+      left: 41%;
+      top: 62%;
+      width: 28%;
+      height: 8%;
+    }
+
+    .naff-menu-canvas--mobile {
+      display: none;
+    }
+
+    /* Mobile version */
+
+    @media (max-width: 700px) {
+      .naff-menu-canvas--desktop {
+        display: none;
+      }
+
+      .naff-menu-canvas--mobile {
+        display: block;
+
+        /*
+          Larger than the viewport because the source
+          artwork contains large white margins.
+        */
+        width: 128vw;
+        aspect-ratio: 960 / 1664;
+      }
+
+      /*
+        These positions are measured against the full
+        960 × 1664 portrait image.
+      */
+
+      .mobile-info {
+        left: 31%;
+        top: 60.8%;
+        width: 17%;
+        height: 4.5%;
+      }
+
+      .mobile-roles {
+        left: 49%;
+        top: 60.8%;
+        width: 29%;
+        height: 4.5%;
+      }
+
+      .mobile-application {
+        left: 39%;
+        top: 65%;
+        width: 30%;
+        height: 4.8%;
+      }
+    }
+
+    /* Pink test rectangles */
+
+    .debug-hotspots .naff-menu-hotspot {
+      outline: 3px solid #ff00b7;
+      background: rgba(255, 0, 183, 0.3);
+    }
+  </style>
 </head>
 
 <body class="debug-hotspots">
-  
-  <main class="artboard-screen">
-    <div class="artboard">
-      <picture>
-        <source
-          media="(max-width: 700px)"
-          srcset="assets/mobile/open-box.png"
-        >
+  <main class="naff-menu-stage">
 
-        <img
-          class="artboard-image"
-          src="assets/desktop/open-box.png"
-          alt="Open decorated NAFF box containing the website menu"
-        >
-      </picture>
-<div class="menu-controls">
-  <a
-    class="menu-hotspot menu-hotspot--info"
-    href="info.html"
-    aria-label="Read ten fun facts about NAFF"
-  >
-    <span class="visually-hidden">Info</span>
-  </a>
+    <!-- Desktop menu -->
 
-  <a
-    class="menu-hotspot menu-hotspot--roles"
-    href="roles.html"
-    aria-label="Read the NAFF role descriptions"
-  >
-    <span class="visually-hidden">Role descriptions</span>
-  </a>
+    <div class="naff-menu-canvas naff-menu-canvas--desktop">
+      <img
+        class="naff-menu-image"
+        src="assets/desktop/open-box.png"
+        alt="Open NAFF box containing the website menu"
+      >
 
-  <a
-    class="menu-hotspot menu-hotspot--application"
-    href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=yyZW-KgN00mqWGTvZ47wGt9AFYVmMq5OkfHVRCCSDN5UMjBPTkYxQ042MldQVUlTVkRGWDZONkxWUi4u"
-    aria-label="Open the NAFF application form"
-  >
-    <span class="visually-hidden">Application form</span>
-  </a>
-</div>
       <a
-        class="menu-hotspot menu-hotspot--info"
+        class="naff-menu-hotspot desktop-info"
         href="info.html"
         aria-label="Read ten fun facts about NAFF"
       >
@@ -73,27 +187,58 @@
       </a>
 
       <a
-        class="menu-hotspot menu-hotspot--roles"
+        class="naff-menu-hotspot desktop-roles"
         href="roles.html"
         aria-label="Read the NAFF role descriptions"
       >
-        <span class="visually-hidden">
-          Role descriptions
-        </span>
+        <span class="visually-hidden">Role descriptions</span>
       </a>
 
       <a
-        class="menu-hotspot menu-hotspot--application"
+        class="naff-menu-hotspot desktop-application"
         href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=yyZW-KgN00mqWGTvZ47wGt9AFYVmMq5OkfHVRCCSDN5UMjBPTkYxQ042MldQVUlTVkRGWDZONkxWUi4u"
         aria-label="Open the NAFF application form"
       >
-        <span class="visually-hidden">
-          Application form
-        </span>
+        <span class="visually-hidden">Application form</span>
       </a>
     </div>
+
+    <!-- Mobile menu -->
+
+    <div class="naff-menu-canvas naff-menu-canvas--mobile">
+      <img
+        class="naff-menu-image"
+        src="assets/mobile/open-box.png"
+        alt="Open NAFF box containing the website menu"
+      >
+
+      <a
+        class="naff-menu-hotspot mobile-info"
+        href="info.html"
+        aria-label="Read ten fun facts about NAFF"
+      >
+        <span class="visually-hidden">Info</span>
+      </a>
+
+      <a
+        class="naff-menu-hotspot mobile-roles"
+        href="roles.html"
+        aria-label="Read the NAFF role descriptions"
+      >
+        <span class="visually-hidden">Role descriptions</span>
+      </a>
+
+      <a
+        class="naff-menu-hotspot mobile-application"
+        href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=yyZW-KgN00mqWGTvZ47wGt9AFYVmMq5OkfHVRCCSDN5UMjBPTkYxQ042MldQVUlTVkRGWDZONkxWUi4u"
+        aria-label="Open the NAFF application form"
+      >
+        <span class="visually-hidden">Application form</span>
+      </a>
+    </div>
+
   </main>
-  <link rel="stylesheet" href="styles.css?v=cursor-6">
-<script src="cursor.js?v=cursor-6"></script>
+
+  <script src="cursor.js?v=cursor-6"></script>
 </body>
 </html>
