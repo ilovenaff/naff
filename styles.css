@@ -249,11 +249,16 @@ img {
   border: 0;
 }
 
-/* One consistent cursor across the entire website */
-*,
-*::before,
-*::after {
-  cursor: url("cursor.png") 0 0, default !important;
+/* One cursor source for the entire website */
+html {
+  cursor: url("cursor.png") 16 16, auto;
+}
+
+body,
+body *,
+body *::before,
+body *::after {
+  cursor: inherit !important;
 }
 
 /* ==================================================
