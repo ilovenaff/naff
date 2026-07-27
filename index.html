@@ -24,7 +24,6 @@
       background: none;
       border: none;
       padding: 20px;  /* clickable breathing room */
-      cursor: pointer;
     }
 
     .image-button img {
@@ -32,6 +31,15 @@
       width: 220px; /* optional */
       height: auto;
     }
+
+    html,
+body,
+body *,
+body *::before,
+body *::after {
+  cursor: url("cursor.png") 16 16, auto !important;
+}
+    
   </style>
 </head>
 
