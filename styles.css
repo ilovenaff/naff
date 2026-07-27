@@ -494,3 +494,67 @@ img {
     touch-action: manipulation;
   }
 }
+
+/* Final mobile box size and button positions */
+@media (max-width: 700px) {
+  /*
+    The portrait image is intentionally wider than the
+    viewport because much of the image is empty white space.
+  */
+  .artboard {
+    position: relative;
+    width: 124vw;
+    max-width: none;
+    aspect-ratio: 960 / 1664;
+  }
+
+  .artboard picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .artboard-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  /*
+    Move the first two buttons slightly upward.
+  */
+  .menu-hotspot--info {
+    left: 31%;
+    top: 54.8%;
+    width: 20%;
+    height: 5%;
+  }
+
+  .menu-hotspot--roles {
+    left: 46%;
+    top: 54.8%;
+    width: 34%;
+    height: 5%;
+  }
+
+  /*
+    Move Application Form upward too.
+  */
+  .menu-hotspot--application {
+    left: 34%;
+    top: 59%;
+    width: 38%;
+    height: 5%;
+  }
+
+  .menu-hotspot {
+    z-index: 100;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+}
