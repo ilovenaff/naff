@@ -3,47 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Anonymously submit your confessions to claim your spot in NAFF heaven." />
+
+    <meta
+      name="description"
+      content="Anonymously submit your confessions to claim your spot in NAFF heaven."
+    />
+
     <title>Confessions | NAFF</title>
+
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Supabase -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+      defer
+    ></script>
+
+    <!-- Confessions -->
     <script src="confessions.js" defer></script>
   </head>
+
   <body class="confessions-page">
+
     <main class="confessions-layout">
-      <aside class="confessions-art" aria-hidden="true">
-        <img src="assets/confessions/cemetery.png" alt="" />
+
+      <aside
+        class="confessions-art"
+        aria-hidden="true"
+      >
+        <img
+          src="assets/confessions/cemetery.png"
+          alt=""
+        />
       </aside>
 
+
       <section class="confessions-content">
+
         <header class="confessions-header">
+
           <div>
             <h1>save yourself!</h1>
-            <p>anonymously submit your confessions to claim your spot in naff heaven!</p>
+
+            <p>
+              anonymously submit your confessions to claim your spot in naff heaven!
+            </p>
           </div>
-          <img src="assets/confessions/angel.png" alt="" aria-hidden="true" />
+
+          <img
+            src="assets/confessions/angel.png"
+            alt=""
+            aria-hidden="true"
+          />
+
         </header>
 
+
         <div class="confessions-panels">
-          <form class="confession-form" id="confession-form">
-            <label class="visually-hidden" for="confession-text">Your anonymous confession</label>
-            <textarea id="confession-text" maxlength="500" placeholder="Write here. No names needed." required></textarea>
-            <button type="submit">confess</button>
-            <p class="confession-status" id="confession-status" role="status" aria-live="polite"></p>
+
+          <!-- CONFESSION FORM -->
+
+          <form
+            class="confession-form"
+            id="confession-form"
+          >
+
+            <label
+              class="visually-hidden"
+              for="confession-text"
+            >
+              Your anonymous confession
+            </label>
+
+            <textarea
+              id="confession-text"
+              maxlength="500"
+              placeholder="Write here. No names needed."
+              required
+            ></textarea>
+
+            <button
+              type="submit"
+              id="confession-submit"
+            >
+              confess
+            </button>
+
+            <p
+              class="confession-status"
+              id="confession-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+
           </form>
 
-          <section class="confession-board" aria-labelledby="confession-count">
+
+          <!-- PUBLIC CONFESSION BOARD -->
+
+          <section
+            class="confession-board"
+            aria-labelledby="confession-count"
+          >
+
             <div class="confession-board__header">
-              <span id="confession-count">0 secrets</span>
+
+              <span id="confession-count">
+                loading...
+              </span>
+
             </div>
-            <div class="confession-list" id="confession-list">
-              <p class="confession-empty">no confessions yet.</p>
+
+            <div
+              class="confession-list"
+              id="confession-list"
+            >
+
+              <p class="confession-empty">
+                loading confessions...
+              </p>
+
             </div>
+
           </section>
+
         </div>
 
-        <a class="confessions-return" href="house.html">return to the house</a>
+
+        <a
+          class="confessions-return"
+          href="house.html"
+        >
+          return to the house
+        </a>
+
       </section>
+
     </main>
+
   </body>
 </html>
