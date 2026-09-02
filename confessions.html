@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Anonymously submit your confessions to claim your spot in NAFF heaven." />
+    <title>Confessions | NAFF</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="confessions.js" defer></script>
+  </head>
+  <body class="confessions-page">
+    <main class="confessions-layout">
+      <aside class="confessions-art" aria-hidden="true">
+        <img src="assets/confessions/cemetery.png" alt="" />
+      </aside>
+
+      <section class="confessions-content">
+        <header class="confessions-header">
+          <div>
+            <h1>save yourself!</h1>
+            <p>anonymously submit your confessions to claim your spot in naff heaven!</p>
+          </div>
+          <img src="assets/confessions/angel.png" alt="" aria-hidden="true" />
+        </header>
+
+        <div class="confessions-panels">
+          <form class="confession-form" id="confession-form">
+            <p class="confession-form__prompt">confess! don't worry, we wont see who wrote it.</p>
+            <label class="visually-hidden" for="confession-text">Your anonymous confession</label>
+            <textarea id="confession-text" maxlength="500" placeholder="Write here. No names needed." required></textarea>
+            <button type="submit">confess</button>
+            <p class="confession-status" id="confession-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <section class="confession-board" aria-labelledby="confession-count">
+            <div class="confession-board__header">
+              <p>repent!</p>
+              <span id="confession-count">0 souls saved</span>
+            </div>
+            <div class="confession-list" id="confession-list">
+              <p class="confession-empty">no confessions yet.</p>
+            </div>
+          </section>
+        </div>
+
+        <a class="confessions-return" href="house.html">return to the house</a>
+      </section>
+    </main>
+  </body>
+</html>
