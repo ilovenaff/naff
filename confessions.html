@@ -21,24 +21,20 @@
       defer
     ></script>
 
-    <!-- Confessions -->
-    <script src="confessions.js" defer></script>
+    <!-- NAFF confession system -->
+    <script src="confessions.js?v=3" defer></script>
   </head>
 
   <body class="confessions-page">
 
     <main class="confessions-layout">
 
-      <aside
-        class="confessions-art"
-        aria-hidden="true"
-      >
+      <aside class="confessions-art" aria-hidden="true">
         <img
           src="assets/confessions/cemetery.png"
           alt=""
         />
       </aside>
-
 
       <section class="confessions-content">
 
@@ -60,10 +56,7 @@
 
         </header>
 
-
         <div class="confessions-panels">
-
-          <!-- CONFESSION FORM -->
 
           <form
             class="confession-form"
@@ -100,37 +93,29 @@
 
           </form>
 
-
-          <!-- PUBLIC CONFESSION BOARD -->
-
           <section
             class="confession-board"
             aria-labelledby="confession-count"
           >
 
             <div class="confession-board__header">
-
               <span id="confession-count">
                 loading...
               </span>
-
             </div>
 
             <div
               class="confession-list"
               id="confession-list"
             >
-
               <p class="confession-empty">
                 loading confessions...
               </p>
-
             </div>
 
           </section>
 
         </div>
-
 
         <a
           class="confessions-return"
