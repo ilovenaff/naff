@@ -1,25 +1,25 @@
 (() => {
 
   // =========================================================
-  // SUPABASE SETTINGS
+  // SUPABASE
   // =========================================================
 
-  const SUPABASE_URL = 'PASTE_YOUR_SUPABASE_URL_HERE';
+  const SUPABASE_URL =
+    'https://azezmiyngqwydinfrhob.supabase.co';
 
-  const SUPABASE_ANON_KEY =
-    'PASTE_YOUR_SUPABASE_ANON_KEY_HERE';
+  const SUPABASE_KEY =
+    'sb_publishable_VmdftEO5hBHc5Pmt-UQU5A_poFuSk7e';
 
 
-  // Make sure Supabase loaded correctly.
   if (!window.supabase) {
-    console.error('Supabase did not load.');
+    console.error('Supabase library did not load.');
     return;
   }
 
 
   const db = window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_ANON_KEY
+    SUPABASE_KEY
   );
 
 
@@ -48,7 +48,7 @@
 
   if (!form || !field || !list || !count) {
     console.error(
-      'Required confession page elements are missing.'
+      'Confession page elements could not be found.'
     );
 
     return;
@@ -67,7 +67,7 @@
 
 
   // =========================================================
-  // DRAW CONFESSIONS ON THE PAGE
+  // SHOW CONFESSIONS
   // =========================================================
 
   function renderConfessions(confessions) {
@@ -106,20 +106,8 @@
       confession.className =
         'confession-entry';
 
-
-      /*
-        IMPORTANT:
-
-        textContent means submitted confessions
-        are treated only as text.
-
-        Someone cannot submit HTML or JavaScript
-        and have the browser execute it.
-      */
-
       confession.textContent =
         item.text;
-
 
       list.appendChild(confession);
 
@@ -129,49 +117,32 @@
 
 
   // =========================================================
-  // GET ALL CONFESSIONS FROM SUPABASE
+  // LOAD EVERYONE'S CONFESSIONS
   // =========================================================
 
   async function loadConfessions() {
 
-    try {
-
-      const { data, error } =
-        await db
-          .from('confessions')
-          .select('id, text, created_at')
-          .order(
-            'created_at',
-            { ascending: false }
-          );
+    const { data, error } =
+      await db
+        .from('confessions')
+        .select('id, text, created_at')
+        .order(
+          'created_at',
+          { ascending: false }
+        );
 
 
-      if (error) {
-        throw error;
-      }
-
-
-      renderConfessions(
-        Array.isArray(data)
-          ? data
-          : []
-      );
-
-
-    } catch (error) {
+    if (error) {
 
       console.error(
-        'Could not load confessions:',
+        'Error loading confessions:',
         error
       );
 
-
       count.textContent =
-        'unable to load secrets';
-
+        'could not load secrets';
 
       list.replaceChildren();
-
 
       const errorMessage =
         document.createElement('p');
@@ -182,12 +153,17 @@
       errorMessage.textContent =
         'could not load confessions.';
 
+      list.appendChild(errorMessage);
 
-      list.appendChild(
-        errorMessage
-      );
-
+      return;
     }
+
+
+    renderConfessions(
+      Array.isArray(data)
+        ? data
+        : []
+    );
 
   }
 
@@ -219,16 +195,12 @@
         );
 
         return;
-
       }
 
-
-      // Stop accidental double submissions.
 
       if (submitButton) {
         submitButton.disabled = true;
       }
-
 
       field.disabled = true;
 
@@ -238,61 +210,58 @@
       );
 
 
-      try {
-
-        const { error } =
-          await db
-            .from('confessions')
-            .insert([
-              {
-                text: confession
-              }
-            ]);
+      const { error } =
+        await db
+          .from('confessions')
+          .insert([
+            {
+              text: confession
+            }
+          ]);
 
 
-        if (error) {
-          throw error;
-        }
-
-
-        field.value = '';
-
-
-        setStatus(
-          'your secret has been saved.'
-        );
-
-
-        // Immediately reload the shared board.
-        await loadConfessions();
-
-
-      } catch (error) {
+      if (error) {
 
         console.error(
-          'Could not save confession:',
+          'Error saving confession:',
           error
         );
-
 
         setStatus(
           'your secret could not be saved. try again.'
         );
 
-
-      } finally {
-
         field.disabled = false;
-
 
         if (submitButton) {
           submitButton.disabled = false;
         }
 
-
         field.focus();
 
+        return;
       }
+
+
+      field.value = '';
+
+      setStatus(
+        'your secret has been saved.'
+      );
+
+
+      field.disabled = false;
+
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+
+
+      field.focus();
+
+
+      // Reload immediately so the new confession appears.
+      await loadConfessions();
 
     }
   );
@@ -306,21 +275,12 @@
 
 
   // =========================================================
-  // AUTOMATICALLY REFRESH THE BOARD
+  // KEEP DIFFERENT DEVICES SYNCHRONISED
   // =========================================================
-
-  /*
-    Every five seconds the page checks Supabase again.
-
-    This means if somebody submits a confession
-    from another phone/computer, it will appear
-    without needing a hard refresh.
-  */
 
   setInterval(
     loadConfessions,
     5000
   );
-
 
 })();
